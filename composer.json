@@ -1,0 +1,24 @@
+{
+	"name": "marc/github-feed",
+	"type": "phpbb-extension",
+	"description": "Adds a github feed to your forum.",
+	"homepage": "http://www.m-a-styles.de",
+	"version": "0.1.0-dev",
+	"time": "2013-12-02 14:25:01",
+	"licence": "GPL-2.0",
+	"authors": [{
+			"name": "Marc Alexander",
+			"username": "marc1706",
+			"email": "admin@m-a-styles.de",
+			"homepage": "http://www.m-a-styles.de",
+			"role": "Lead Developer"
+		}],
+	"require": {
+		"php": ">=5.3.3",
+		"phpbb/phpbb": "3.1.*@dev",
+		"ext-curl": "*"
+	},
+	"extra": {
+		"display-name": "Github Feed"
+	}
+}
