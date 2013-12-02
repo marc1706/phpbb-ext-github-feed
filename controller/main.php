@@ -22,16 +22,38 @@ class main
 		$options = array(
 			CURLOPT_RETURNTRANSFER	=> true,
 			CURLOPT_HTTPHEADER	=> array('User-Agent: Github Feed'),
+			CURLOPT_CONNECTTIMEOUT	=> 5,
 		);
 
 		// Setting curl options
 		curl_setopt_array($curl_handle, $options);
 
 		$result = curl_exec($curl_handle);
-		$this->template->assign_vars(array(
-			'GITHUB_FEED_DATA'	=> print_r(json_decode($result), true),
-		));
+		$commit_data = json_decode($result);
 		curl_close($curl_handle);
+		foreach ($commit_data as $commit)
+		{
+			if (strpos($commit->commit->message, "\n") !== false)
+			{
+				$message = explode("\n", $commit->commit->message);
+				$commit_title = array_shift($message);
+				$commit_message = implode($message, '<br />');
+			}
+			else
+			{
+				$commit_title = $commit->commit->message;
+				$commit_message = '';
+			}
+
+			$this->template->assign_block_vars('github_feed_row', array(
+				'AUTHOR'		=> $commit->commit->author->name,
+				'AUTHOR_AVATAR'		=> $commit->author->avatar_url,
+				'AUTHOR_LINK'		=> $commit->author->html_url,
+				'COMMIT_TITLE'		=> $commit_title,
+				'COMMIT_MESSAGE'	=> $commit_message,
+				'COMMIT_URL'		=> $commit->html_url,
+			));
+		}
 
 		page_header('Github Feed');
 
