@@ -1,0 +1,5 @@
+services:
+    marc.githubfeed:
+        class: \marc\githubfeed\controller\main
+        arguments:
+            - @template

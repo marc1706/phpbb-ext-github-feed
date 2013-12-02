@@ -1,0 +1,3 @@
+githubfeed_controller:
+    pattern: /githubfeed
+    defaults: { _controller: marc.githubfeed:handle }

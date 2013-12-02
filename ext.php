@@ -11,7 +11,7 @@
 // however you can override the default methods and add custom
 // installation logic
 
-namespace marc\github-feed;
+namespace marc\githubfeed;
 
 class ext extends \phpbb\extension\base
 {

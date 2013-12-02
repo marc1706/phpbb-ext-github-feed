@@ -1,5 +1,5 @@
 {
-	"name": "marc/github-feed",
+	"name": "marc/githubfeed",
 	"type": "phpbb-extension",
 	"description": "Adds a github feed to your forum.",
 	"homepage": "http://www.m-a-styles.de",
